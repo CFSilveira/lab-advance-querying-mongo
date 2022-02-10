@@ -20,7 +20,7 @@ limit: 20
 
 ### 3. All the companies founded between 2000 and 2005, both years included. Retrieve only the `name` and `founded_year` fields.
 
-query: {$and: [{founded_year: {$gte: 2000}}, {founded_year: {$lte: 20005}}]}
+query: {$and: [{founded_year: {$gte: 2000}}, {founded_year: {$lte: 2005}}]}
 projection: {name: 1, founded_year: 1, _id:0}
 sort:
 skip:
@@ -148,7 +148,7 @@ limit: 10
 
 ### 19. All the companies that have been founded between 2000 and 2010, but have not been acquired before 2011.
 
-query:
+query: {$and: [{founded_year: {$gte: 2000}}, {founded_year: {$lte: 2010}}, {acquisition.acquired_year: {$gte: 2011}}]}
 projection:
 sort:
 skip:
